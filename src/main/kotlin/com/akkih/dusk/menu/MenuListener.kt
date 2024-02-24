@@ -8,7 +8,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.inventory.InventoryOpenEvent
 import org.bukkit.inventory.Inventory
 
-class MenuListener {
+internal class MenuListener {
     init {
         Event.listenTo<InventoryOpenEvent> {
             asMenu(inventory)?.onOpenAction?.invoke(this)
