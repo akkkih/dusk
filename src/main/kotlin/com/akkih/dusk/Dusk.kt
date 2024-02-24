@@ -1,10 +1,13 @@
 package com.akkih.dusk
 
+import com.akkih.dusk.menu.MenuListener
 import org.bukkit.plugin.java.JavaPlugin
 
 class Dusk private constructor(plugin: JavaPlugin) {
     init {
         Companion.plugin = plugin
+
+        MenuListener()
     }
 
     companion object {
