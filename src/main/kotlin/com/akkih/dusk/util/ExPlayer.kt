@@ -63,8 +63,4 @@ fun Player.freeze() {
 /**
  * Unfreezes the player.
  */
-fun Player.unfreeze() {
-    this.removeMetadata("frozen")
-    this.resetWalkSpeed()
-    this.resetFlySpeed()
-}
+fun Player.unfreeze() = this.removeMetadata("frozen")
