@@ -4,7 +4,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
 
 /**
- * Extension property to get the Player associated with an InventoryClickEvent.
+ * Retrieves the Player associated with the InventoryClickEvent.
  */
 val InventoryClickEvent.player: Player
     get() = whoClicked as Player
