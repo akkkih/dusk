@@ -54,11 +54,7 @@ fun Player.removeMetadata(key: String) = this.removeMetadata(key, Dusk.plugin)
 /**
  * Freezes the player.
  */
-fun Player.freeze() {
-    this.setMetadata("frozen", true)
-    this.walkSpeed = 0.0F
-    this.flySpeed = 0.0F
-}
+fun Player.freeze() = this.setMetadata("frozen", true)
 
 /**
  * Unfreezes the player.
