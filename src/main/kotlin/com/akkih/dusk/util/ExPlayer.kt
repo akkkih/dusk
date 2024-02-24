@@ -17,6 +17,11 @@ fun Player.clearActionBar() = this.sendActionBar(text())
 fun Player.feed() { this.foodLevel = 20 }
 
 /**
+ * Clears the player's inventory.
+ */
+fun Player.clearInventory() = this.inventory.clearAll()
+
+/**
  * Reset the player's walk speed to the default value.
  */
 fun Player.resetWalkSpeed() { this.walkSpeed = 0.2F }
