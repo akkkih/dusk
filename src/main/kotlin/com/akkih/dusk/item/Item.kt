@@ -1,9 +1,7 @@
 package com.akkih.dusk.item
 
-import com.akkih.dusk.extension.toComponent
-import net.kyori.adventure.text.Component
+import com.akkih.dusk.extension.toMiniMessageComponent
 import org.bukkit.Material
-import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
 
@@ -42,23 +40,7 @@ inline fun <reified T : ItemMeta> ItemStack.meta(callback: T.() -> Unit) =
  * @param displayName The display name to set.
  * @return The modified ItemStack.
  */
-fun ItemStack.displayName(displayName: String) = meta<ItemMeta> { this.displayName(displayName.toComponent()) }
-
-/**
- * Sets the display name of an ItemStack using a Component.
- *
- * @param displayName The display name to set.
- * @return The modified ItemStack.
- */
-fun ItemStack.displayName(displayName: Component) = meta<ItemMeta> { this.displayName(displayName) }
-
-/**
- * Sets the lore of an ItemStack using a list of Components.
- *
- * @param lore The lore to set.
- * @return The modified ItemStack.
- */
-fun ItemStack.lore(lore: List<Component>) = meta<ItemMeta> { this.lore(lore) }
+fun ItemStack.displayName(displayName: String) = meta<ItemMeta> { this.displayName(displayName.toMiniMessageComponent()) }
 
 /**
  * Sets the lore of an ItemStack using a list of Strings.
@@ -66,26 +48,7 @@ fun ItemStack.lore(lore: List<Component>) = meta<ItemMeta> { this.lore(lore) }
  * @param lore The lore to set.
  * @return The modified ItemStack.
  */
-fun ItemStack.lore(lore: List<String>) = meta<ItemMeta> { this.lore(lore.toComponent()) }
-
-/**
- * Enchants an ItemStack with a specific enchantment and level.
- *
- * @param enchantment The enchantment to apply.
- * @param level The level of the enchantment.
- * @return The modified ItemStack.
- */
-fun ItemStack.enchant(enchantment: Enchantment, level: Int) =
-    apply { this.addUnsafeEnchantment(enchantment, level) }
-
-/**
- * Enchants an ItemStack with multiple enchantments and their respective levels.
- *
- * @param enchantments A map containing the enchantments and their levels.
- * @return The modified ItemStack.
- */
-fun ItemStack.enchant(enchantments: Map<Enchantment, Int>) =
-    apply { enchantments.forEach { this.addUnsafeEnchantment(it.key, it.value) } }
+fun ItemStack.lore(lore: List<String>) = meta<ItemMeta> { this.lore(lore.toMiniMessageComponent()) }
 
 /**
  * Creates an ItemStack from a Material with a specified amount and custom meta.
