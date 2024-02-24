@@ -1,5 +1,6 @@
 package com.akkih.dusk
 
+import com.akkih.dusk.event.listener.PlayerListener
 import com.akkih.dusk.menu.MenuListener
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -8,6 +9,7 @@ class Dusk private constructor(plugin: JavaPlugin) {
         Companion.plugin = plugin
 
         MenuListener()
+        PlayerListener()
     }
 
     companion object {
