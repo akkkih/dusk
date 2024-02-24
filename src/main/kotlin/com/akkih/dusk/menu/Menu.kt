@@ -1,6 +1,6 @@
 package com.akkih.dusk.menu
 
-import com.akkih.dusk.util.toComponent
+import com.akkih.dusk.extension.toComponent
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player

@@ -1,4 +1,4 @@
-package com.akkih.dusk.util
+package com.akkih.dusk.extension
 
 import com.akkih.dusk.Dusk
 import net.kyori.adventure.text.Component.text

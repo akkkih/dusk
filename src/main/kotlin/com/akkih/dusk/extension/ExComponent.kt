@@ -1,4 +1,4 @@
-package com.akkih.dusk.util
+package com.akkih.dusk.extension
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.minimessage.MiniMessage

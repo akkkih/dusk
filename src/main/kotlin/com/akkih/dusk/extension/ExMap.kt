@@ -1,4 +1,4 @@
-package com.akkih.dusk.util
+package com.akkih.dusk.extension
 
 /**
  * Finds the first key associated with the specified value in the map.

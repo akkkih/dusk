@@ -1,4 +1,4 @@
-package com.akkih.dusk.util
+package com.akkih.dusk.extension
 
 import com.akkih.dusk.menu.Menu
 import org.bukkit.entity.Player

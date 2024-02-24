@@ -1,4 +1,4 @@
-package com.akkih.dusk.util
+package com.akkih.dusk.extension
 
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
