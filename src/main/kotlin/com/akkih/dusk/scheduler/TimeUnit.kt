@@ -1,4 +1,4 @@
-package com.akkih.dusk.runnable
+package com.akkih.dusk.scheduler
 
 /**
  * Provides an abstraction for representing various time units, including custom support for Minecraft ticks.

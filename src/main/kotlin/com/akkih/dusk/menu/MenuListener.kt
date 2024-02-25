@@ -1,8 +1,7 @@
 package com.akkih.dusk.menu
 
-import com.akkih.dusk.Dusk
 import com.akkih.dusk.event.Event
-import org.bukkit.Bukkit
+import com.akkih.dusk.scheduler.Scheduler
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.inventory.InventoryOpenEvent
@@ -25,10 +24,10 @@ internal class MenuListener {
                 isCancelled = true
                 if (clickedInventory != menu.inventory) return@listenTo
 
-                Bukkit.getScheduler().runTaskLater(Dusk.plugin, Runnable {
+                Scheduler.delayTask(1) {
                     menu.onClickAction.invoke(this@listenTo)
                     menu.buttonMap[slot]?.onClick(this@listenTo)
-                }, 1L)
+                }
             }
         }
     }
