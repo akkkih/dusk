@@ -1,5 +1,6 @@
 package com.akkih.dusk.menu
 
+import com.akkih.dusk.extension.button
 import com.akkih.dusk.extension.toComponent
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
@@ -118,10 +119,11 @@ abstract class Menu : InventoryHolder {
      *
      * @param button The button to add.
      */
-    fun addButton(button: Button) {
-        buttonMap[button.slot] = button
-        inventory.setItem(button.slot, button.item)
-    }
+    fun addButton(slot: Int, item: ItemStack, callback: InventoryClickEvent.() -> Unit) =
+        button(slot, item, callback).apply {
+            buttonMap[slot] = this
+            inventory.setItem(slot, item)
+        }
 
     /**
      * Sets a border around the menu with the specified item.
