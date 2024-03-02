@@ -1,17 +1,18 @@
 package com.akkih.dusk.extension
 
 import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.format.TextDecoration
 import net.kyori.adventure.text.minimessage.MiniMessage
 
 /**
- * Converts a String to a Component using the default formatting.
+ * Converts a String to a Component with italics disabled.
  *
  * @return The converted Component.
  */
-fun String.toComponent() = Component.text(this)
+fun String.toComponent() = Component.text(this).decoration(TextDecoration.ITALIC, false)
 
 /**
- * Converts a list of Strings into a list of Components using the default formatting.
+ * Converts a list of Strings into a list of Components with italics disabled.
  *
  * @return The converted list of Components.
  */
@@ -23,6 +24,7 @@ fun List<String>.toComponent() = this.map { it.toComponent() }
  * @return The converted Component.
  */
 fun String.toMiniMessageComponent() = MiniMessage.miniMessage().deserialize(this)
+    .decoration(TextDecoration.ITALIC, false)
 
 /**
  * Converts a list of Strings containing MiniMessage format into a list of MiniMessage Components.
