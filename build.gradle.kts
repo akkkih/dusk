@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.akkih"
-version = "0.5.2-beta"
+version = "0.5.3-beta"
 
 repositories {
     maven("https://repo.papermc.io/repository/maven-public/")
