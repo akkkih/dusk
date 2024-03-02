@@ -1,7 +1,7 @@
 package com.akkih.dusk.menu
 
-import com.akkih.dusk.event.Event
-import com.akkih.dusk.scheduler.Scheduler
+import com.akkih.dusk.event.event
+import com.akkih.dusk.scheduler.delayTask
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.inventory.InventoryOpenEvent
@@ -9,24 +9,24 @@ import org.bukkit.inventory.Inventory
 
 internal class MenuListener {
     init {
-        Event.listenTo<InventoryOpenEvent> {
+        event<InventoryOpenEvent> {
             asMenu(inventory)?.onOpenAction?.invoke(this)
         }
 
-        Event.listenTo<InventoryCloseEvent> {
+        event<InventoryCloseEvent> {
             asMenu(inventory)?.onCloseAction?.invoke(this)
         }
 
-        Event.listenTo<InventoryClickEvent> {
-            if (clickedInventory == null) return@listenTo
+        event<InventoryClickEvent> {
+            if (clickedInventory == null) return@event
 
             asMenu(view.topInventory)?.let { menu ->
                 isCancelled = true
-                if (clickedInventory != menu.inventory) return@listenTo
+                if (clickedInventory != menu.inventory) return@event
 
-                Scheduler.delayTask(1) {
-                    menu.onClickAction.invoke(this@listenTo)
-                    menu.buttonMap[slot]?.onClick(this@listenTo)
+                delayTask(1) {
+                    menu.onClickAction.invoke(this@event)
+                    menu.buttonMap[slot]?.onClick(this@event)
                 }
             }
         }

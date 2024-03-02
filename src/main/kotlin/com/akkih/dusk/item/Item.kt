@@ -6,23 +6,18 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
 
 /**
- * Utility object for creating ItemStack instances with fluent builder-style methods.
+ * Creates an ItemStack with the specified material, amount, and meta customization.
+ *
+ * @param material The material of the ItemStack.
+ * @param amount The amount of items in the ItemStack (default is 1).
+ * @param meta Customization function for configuring the ItemMeta.
+ * @return The created ItemStack.
  */
-object Item {
-    /**
-     * Creates an ItemStack with the specified material, amount, and meta customization.
-     *
-     * @param material The material of the ItemStack.
-     * @param amount The amount of items in the ItemStack (default is 1).
-     * @param meta Customization function for configuring the ItemMeta.
-     * @return The created ItemStack.
-     */
-    fun create(
-        material: Material,
-        amount: Int = 1,
-        meta: ItemMeta.() -> Unit = {},
-    ) = ItemStack(material, amount).meta(meta)
-}
+fun item(
+    material: Material,
+    amount: Int = 1,
+    meta: ItemMeta.() -> Unit = {},
+) = ItemStack(material, amount).meta(meta)
 
 /**
  * Adds metadata to an ItemStack using a reified type parameter and a customization callback.
@@ -60,4 +55,4 @@ fun ItemStack.lore(lore: List<String>) = meta<ItemMeta> { this.lore(lore.toMiniM
 fun Material.asItemStack(
     amount: Int = 1,
     meta: ItemMeta.() -> Unit = {},
-) = Item.create(this, amount, meta)
+) = item(this, amount, meta)
