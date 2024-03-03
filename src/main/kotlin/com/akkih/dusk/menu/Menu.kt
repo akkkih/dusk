@@ -1,6 +1,5 @@
 package com.akkih.dusk.menu
 
-import com.akkih.dusk.extension.button
 import com.akkih.dusk.extension.toComponent
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
@@ -115,14 +114,42 @@ abstract class Menu : InventoryHolder {
     fun addItem(vararg items: ItemStack) = inventory.addItem(*items)
 
     /**
-     * Adds a button to the menu.
+     * Creates a Button instance with the specified slot, item, and click callback.
      *
-     * @param button The button to add.
+     * @param slot The slot index where the button will be located in the menu.
+     * @param item The ItemStack representing the appearance of the button.
+     * @param callback The callback function to be executed when the button is clicked.
+     * @return A Button instance.
      */
-    fun addButton(slot: Int, item: ItemStack, callback: InventoryClickEvent.() -> Unit) =
-        button(slot, item, callback).apply {
+    fun button(slot: Int, item: ItemStack, callback: InventoryClickEvent.() -> Unit) =
+        object : Button(slot, item) {
+            override fun onClick(event: InventoryClickEvent) = callback(event)
+        }.apply {
             buttonMap[slot] = this
             inventory.setItem(slot, item)
+        }
+
+    /**
+     * Creates a toggleable button with the specified slot, the item when the state is true,
+     * the item when the state is false, the actual state of the button and the click callback.
+     *
+     * @param slot The slot index where the button will be located in the menu.
+     * @param trueItem The ItemStack representing the button when the state is true.
+     * @param falseItem The ItemStack representing the button when the state is false.
+     * @param state The current state of the button. Default is `true`.
+     * @param callback The callback function to be executed when the button is clicked.
+     * @return A [ToggleableButton] instance.
+     */
+    fun toggleableButton(slot: Int,
+                         trueItem: ItemStack,
+                         falseItem: ItemStack,
+                         state: Boolean = true,
+                         callback: InventoryClickEvent.() -> Unit) =
+        object : ToggleableButton(slot, trueItem, falseItem, state) {
+            override fun onStateChange(event: InventoryClickEvent) = callback(event)
+        }.apply {
+            buttonMap[slot] = this
+            inventory.setItem(slot, if (state) trueItem else falseItem)
         }
 
     /**

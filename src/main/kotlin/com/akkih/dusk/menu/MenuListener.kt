@@ -27,6 +27,11 @@ internal class MenuListener {
                 delayTask(1) {
                     menu.onClickAction.invoke(this@event)
                     menu.buttonMap[slot]?.onClick(this@event)
+
+                    if (menu.getButton(slot) is ToggleableButton) {
+                        val button = menu.getButton(slot) as ToggleableButton
+                        menu.setItem(slot, if (button.state) button.trueItem else button.falseItem)
+                    }
                 }
             }
         }
