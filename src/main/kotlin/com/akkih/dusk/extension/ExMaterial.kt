@@ -1,6 +1,8 @@
 package com.akkih.dusk.extension
 
+import com.akkih.dusk.item.item
 import org.bukkit.Material
+import org.bukkit.inventory.meta.ItemMeta
 
 /**
  * Checks if the material represents a pickaxe.
@@ -67,3 +69,15 @@ val Material.isWater: Boolean
  */
 val Material.isLava: Boolean
     get() = this == Material.LAVA
+
+/**
+ * Creates an ItemStack from a Material with a specified amount and custom meta.
+ *
+ * @param amount The amount of items in the ItemStack (default is 1).
+ * @param meta Customization function for configuring the ItemMeta.
+ * @return The created ItemStack.
+ */
+fun Material.asItemStack(
+    amount: Int = 1,
+    meta: ItemMeta.() -> Unit = {},
+) = item(this, amount, meta)
