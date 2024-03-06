@@ -13,8 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta
  * @param meta Customization function for configuring the ItemMeta.
  * @return The created ItemStack.
  */
-fun item(
-    material: Material,
-    amount: Int = 1,
-    meta: ItemMeta.() -> Unit = {},
-) = ItemStack(material, amount).meta(meta)
+fun item(material: Material,
+         amount: Int = 1,
+         meta: ItemMeta.() -> Unit = {}) =
+    ItemStack(material, amount).meta(meta)

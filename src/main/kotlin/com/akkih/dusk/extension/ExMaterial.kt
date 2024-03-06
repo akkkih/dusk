@@ -77,7 +77,6 @@ val Material.isLava: Boolean
  * @param meta Customization function for configuring the ItemMeta.
  * @return The created ItemStack.
  */
-fun Material.asItemStack(
-    amount: Int = 1,
-    meta: ItemMeta.() -> Unit = {},
-) = item(this, amount, meta)
+fun Material.asItemStack(amount: Int = 1,
+                         meta: ItemMeta.() -> Unit = {}) =
+    item(this, amount, meta)

@@ -28,16 +28,15 @@ fun asyncTask(runnable: BukkitRunnable.() -> Unit) = createBukkitRunnable(runnab
  * @param runnable The function representing the task to be executed.
  * @return The BukkitTask representing the scheduled task.
  */
-fun delayTask(
-    value: Int,
-    unit: TimeUnit = TimeUnit.TICKS,
-    async: Boolean = false,
-    runnable: BukkitRunnable.() -> Unit
-) = if (async) {
-    createBukkitRunnable(runnable).runTaskLaterAsynchronously(Dusk.plugin, unit.toTicks(value.toLong()))
-} else {
-    createBukkitRunnable(runnable).runTaskLater(Dusk.plugin, unit.toTicks(value.toLong()))
-}
+fun delayTask(value: Int,
+              unit: TimeUnit = TimeUnit.TICKS,
+              async: Boolean = false,
+              runnable: BukkitRunnable.() -> Unit) =
+    if (async) {
+        createBukkitRunnable(runnable).runTaskLaterAsynchronously(Dusk.plugin, unit.toTicks(value.toLong()))
+    } else {
+        createBukkitRunnable(runnable).runTaskLater(Dusk.plugin, unit.toTicks(value.toLong()))
+    }
 
 /**
  * Schedules a delayed task to be executed by the Bukkit scheduler.
@@ -71,25 +70,24 @@ fun delayTask(ticks: Int = 1, async: Boolean, runnable: BukkitRunnable.() -> Uni
  * @param runnable The function representing the task to be executed.
  * @return The BukkitTask representing the scheduled task.
  */
-fun repeatTask(
-    delay: Int,
-    period: Int,
-    unit: TimeUnit = TimeUnit.TICKS,
-    async: Boolean = false,
-    runnable: BukkitRunnable.() -> Unit
-) = if (async) {
-    createBukkitRunnable(runnable).runTaskTimerAsynchronously(
-        Dusk.plugin,
-        unit.toTicks(delay.toLong()),
-        unit.toTicks(period.toLong())
-    )
-} else {
-    createBukkitRunnable(runnable).runTaskTimer(
-        Dusk.plugin,
-        unit.toTicks(delay.toLong()),
-        unit.toTicks(period.toLong())
-    )
-}
+fun repeatTask(delay: Int,
+               period: Int,
+               unit: TimeUnit = TimeUnit.TICKS,
+               async: Boolean = false,
+               runnable: BukkitRunnable.() -> Unit) =
+    if (async) {
+        createBukkitRunnable(runnable).runTaskTimerAsynchronously(
+            Dusk.plugin,
+            unit.toTicks(delay.toLong()),
+            unit.toTicks(period.toLong())
+        )
+    } else {
+        createBukkitRunnable(runnable).runTaskTimer(
+            Dusk.plugin,
+            unit.toTicks(delay.toLong()),
+            unit.toTicks(period.toLong())
+        )
+    }
 
 /**
  * Schedules a repeating task to be executed by the Bukkit scheduler.

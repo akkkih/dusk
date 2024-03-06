@@ -14,17 +14,16 @@ import org.bukkit.event.Listener
  * @param ignoreCancelled Whether to ignore cancelled events.
  * @param callback The callback function to be executed when the event occurs.
  */
-inline fun <reified T : Event> event(
-    priority: EventPriority = EventPriority.NORMAL,
-    ignoreCancelled: Boolean = false,
-    crossinline callback: T.() -> Unit
-) = Bukkit.getServer().pluginManager.registerEvent(
-    T::class.java,
-    object : Listener {},
-    priority,
-    { _, event ->
-        if (event is T) callback(event)
-    },
-    Dusk.plugin,
-    ignoreCancelled
-)
+inline fun <reified T : Event> event(priority: EventPriority = EventPriority.NORMAL,
+                                     ignoreCancelled: Boolean = false,
+                                     crossinline callback: T.() -> Unit) =
+    Bukkit.getServer().pluginManager.registerEvent(
+        T::class.java,
+        object : Listener {},
+        priority,
+        { _, event ->
+            if (event is T) callback(event)
+        },
+        Dusk.plugin,
+        ignoreCancelled
+    )

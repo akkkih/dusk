@@ -23,4 +23,4 @@ val Inventory.isFull: Boolean
  *
  * @param itemStacks The ItemStacks to add to the inventory.
  */
-fun Inventory.addItems(vararg itemStacks: ItemStack) = itemStacks.forEach { this.addItem(it) }
+fun Inventory.addItems(vararg itemStacks: ItemStack) = this.addItem(*itemStacks)

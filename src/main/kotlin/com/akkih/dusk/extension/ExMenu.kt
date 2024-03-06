@@ -1,9 +1,7 @@
 package com.akkih.dusk.extension
 
-import com.akkih.dusk.item.item
 import com.akkih.dusk.menu.Menu
 import net.kyori.adventure.text.Component
-import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
@@ -25,11 +23,10 @@ fun Player.openMenu(menu: Menu) = menu.open(this)
  * @param callback The callback function to be executed when the menu is created.
  * @return A Menu instance.
  */
-fun menu(
-    title: String,
-    type: InventoryType,
-    callback: Menu.() -> Unit
-): Menu = menu(title.toComponent(), type, callback)
+fun menu(title: String,
+         type: InventoryType,
+         callback: Menu.() -> Unit) =
+    menu(title.toComponent(), type, callback)
 
 /**
  * Creates a menu with the specified title, inventory type, and callback function.
@@ -63,11 +60,10 @@ fun menu(title: Component, type: InventoryType, callback: Menu.() -> Unit): Menu
  * @param callback The callback function to be executed when the menu is created.
  * @return A Menu instance.
  */
-fun menu(
-    title: String,
-    rows: Int,
-    callback: Menu.() -> Unit
-): Menu = menu(title.toComponent(), rows, callback)
+fun menu(title: String,
+         rows: Int,
+         callback: Menu.() -> Unit) =
+    menu(title.toComponent(), rows, callback)
 
 /**
  * Creates a menu with the specified title, number of rows, and callback function.
