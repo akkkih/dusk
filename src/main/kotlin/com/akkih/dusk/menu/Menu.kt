@@ -202,14 +202,6 @@ abstract class Menu : InventoryHolder {
     fun getItem(slot: Int) = inventory.getItem(slot)
 
     /**
-     * Gets the button at the specified slot in the menu.
-     *
-     * @param slot The slot index.
-     * @return The button at the specified slot, or null if no button is present.
-     */
-    fun getButton(slot: Int) = buttonMap[slot]
-
-    /**
      * Removes the item at the specified slot in the menu.
      *
      * **NOTE:** To remove a [Button], use [removeButton] instead.
