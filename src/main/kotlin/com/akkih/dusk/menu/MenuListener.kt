@@ -28,8 +28,8 @@ internal class MenuListener {
                     menu.onClickAction.invoke(this@event)
                     menu.buttonMap[slot]?.onClick(this@event)
 
-                    if (menu.getButton(slot) is ToggleableButton) {
-                        val button = menu.getButton(slot) as ToggleableButton
+                    if (menu.buttons[slot] is ToggleableButton) {
+                        val button = menu.buttons[slot] as ToggleableButton
                         menu.setItem(slot, if (button.state) button.trueItem else button.falseItem)
                     }
                 }

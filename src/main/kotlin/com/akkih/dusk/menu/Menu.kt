@@ -177,10 +177,9 @@ abstract class Menu : InventoryHolder {
      *
      * @param item The item to fill empty slots with.
      */
-    fun fillEmpty(item: ItemStack) =
-        (0 until inventory.size)
-            .filter { inventory.getItem(it)?.type?.isAir != false }
-            .forEach { inventory.setItem(it, item) }
+    fun fillEmpty(item: ItemStack) = (0 until inventory.size)
+        .filter { inventory.getItem(it)?.type?.isAir != false }
+        .forEach { inventory.setItem(it, item) }
 
     /**
      * Fills a specified range of slots in the menu with the specified item.
@@ -189,9 +188,8 @@ abstract class Menu : InventoryHolder {
      * @param end The ending slot index (exclusive).
      * @param item The item to fill the range with.
      */
-    fun fillRange(start: Int, end: Int, item: ItemStack) =
-        (start until end)
-            .forEach { inventory.setItem(it, item) }
+    fun fillRange(start: Int, end: Int, item: ItemStack) = (start until end)
+        .forEach { inventory.setItem(it, item) }
 
     /**
      * Gets the item at the specified slot in the menu.
@@ -215,9 +213,8 @@ abstract class Menu : InventoryHolder {
      *
      * @param slot The slot index.
      */
-    fun removeButton(slot: Int) =
-        buttonMap.remove(slot)
-            .also { remove(slot) }
+    fun removeButton(slot: Int) = buttonMap.remove(slot)
+        .also { remove(slot) }
 
     /**
      * Gets all buttons in the menu.

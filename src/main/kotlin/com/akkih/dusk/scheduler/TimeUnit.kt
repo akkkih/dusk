@@ -28,9 +28,8 @@ enum class TimeUnit(private val javaTimeUnit: java.util.concurrent.TimeUnit?) {
      * @param duration The duration to be converted.
      * @return The equivalent number of days.
      */
-    fun toDays(duration: Long): Long {
-        return javaTimeUnit?.toDays(duration) ?: (duration / TICKS_PER_DAY)
-    }
+    fun toDays(duration: Long) = javaTimeUnit?.toDays(duration)
+        ?: (duration / TICKS_PER_DAY)
 
     /**
      * Convert the given `duration` to hours.
@@ -38,9 +37,8 @@ enum class TimeUnit(private val javaTimeUnit: java.util.concurrent.TimeUnit?) {
      * @param duration The duration to be converted.
      * @return The equivalent number of hours.
      */
-    fun toHours(duration: Long): Long {
-        return javaTimeUnit?.toHours(duration) ?: (duration / TICKS_PER_HOUR)
-    }
+    fun toHours(duration: Long) = javaTimeUnit?.toHours(duration)
+        ?: (duration / TICKS_PER_HOUR)
 
     /**
      * Convert the given `duration` to minutes.
@@ -48,9 +46,8 @@ enum class TimeUnit(private val javaTimeUnit: java.util.concurrent.TimeUnit?) {
      * @param duration The duration to be converted.
      * @return The equivalent number of minutes.
      */
-    fun toMinutes(duration: Long): Long {
-        return javaTimeUnit?.toMinutes(duration) ?: (duration / TICKS_PER_MINUTE)
-    }
+    fun toMinutes(duration: Long) = javaTimeUnit?.toMinutes(duration)
+        ?: (duration / TICKS_PER_MINUTE)
 
     /**
      * Convert the given `duration` to seconds.
@@ -58,9 +55,8 @@ enum class TimeUnit(private val javaTimeUnit: java.util.concurrent.TimeUnit?) {
      * @param duration The duration to be converted.
      * @return The equivalent number of seconds.
      */
-    fun toSeconds(duration: Long): Long {
-        return javaTimeUnit?.toSeconds(duration) ?: (duration / TICKS_PER_SECOND)
-    }
+    fun toSeconds(duration: Long) = javaTimeUnit?.toSeconds(duration)
+        ?: (duration / TICKS_PER_SECOND)
 
     /**
      * Convert the given `duration` to Minecraft ticks.
@@ -68,9 +64,8 @@ enum class TimeUnit(private val javaTimeUnit: java.util.concurrent.TimeUnit?) {
      * @param duration The duration to be converted.
      * @return The equivalent number of Minecraft ticks.
      */
-    fun toTicks(duration: Long): Long {
-        return (javaTimeUnit?.toMillis(duration)?.div(50)) ?: duration
-    }
+    fun toTicks(duration: Long) = (javaTimeUnit?.toMillis(duration)?.div(50))
+        ?: duration
 
     /**
      * Convert the given `duration` to milliseconds.
@@ -78,7 +73,6 @@ enum class TimeUnit(private val javaTimeUnit: java.util.concurrent.TimeUnit?) {
      * @param duration The duration to be converted.
      * @return The equivalent number of milliseconds.
      */
-    fun toMillis(duration: Long): Long {
-        return javaTimeUnit?.toMillis(duration) ?: (duration * 50)
-    }
+    fun toMillis(duration: Long) = javaTimeUnit?.toMillis(duration)
+        ?: (duration * 50)
 }
