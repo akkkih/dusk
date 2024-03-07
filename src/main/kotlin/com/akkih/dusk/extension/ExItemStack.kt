@@ -19,7 +19,8 @@ inline fun <reified T : ItemMeta> ItemStack.meta(callback: T.() -> Unit) =
  * @param displayName The display name to set.
  * @return The modified ItemStack.
  */
-fun ItemStack.displayName(displayName: String) = meta<ItemMeta> { this.displayName(displayName.toMiniMessageComponent()) }
+fun ItemStack.displayName(displayName: String) =
+    meta<ItemMeta> { this.displayName(displayName.toMiniMessageComponent()) }
 
 /**
  * Sets the lore of an ItemStack using a list of Strings.
